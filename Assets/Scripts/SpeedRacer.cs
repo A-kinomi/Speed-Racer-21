@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SpeedRacer : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class SpeedRacer : MonoBehaviour
 
     //Assighnment.04.2
     public string carMaker;
+
+    public TextMeshProUGUI UIText;//
     
 
     public class Fuel
@@ -33,38 +36,44 @@ public class SpeedRacer : MonoBehaviour
         public Fuel carFuel = new Fuel(100);
    
 
-    void Start()
+    public void Start()
     {
         /* A.04.1
         print("The lacer model is " + carModel + ". It has a " + engineType + " engine.");
         */
-         print("The lacer model is " + carModel + ". It is made by " + carMaker + ". It has a " + engineType + " engine."); 
-         
+         //print("The lacer model is " + carModel + ". It is made by " + carMaker + ". It has a " + engineType + " engine."); 
+        UIText.text += "The lacer model is " + carModel + ". It is made by " + carMaker + ". It has a " + engineType + " engine."; 
          
         CheckWeight();
         if (yearMade <= 2009)
             {
-                print("The car was introduced in " + yearMade + ".");
+                //print("The car was introduced in " + yearMade + ".");
+                 UIText.text += "The car was introduced in " + yearMade + ".";
 
                 int carAge = CalculateAge(yearMade);
 
-                print("That makes it " + carAge + "years old.");
+                //print("That makes it " + carAge + "years old.");
+                 UIText.text += "That makes it " + carAge + "years old.";
             }
         else 
             {
-                print("The car was introduced in the 2010's.");
-                print("The car's maximum acceleration is " + maxAcceleration + "m/s2.");
+                //print("The car was introduced in the 2010's.");
+                 UIText.text += "The car was introduced in the 2010's.";
+                //print("The car's maximum acceleration is " + maxAcceleration + "m/s2.");
+                 UIText.text += "The car's maximum acceleration is " + maxAcceleration + "m/s2.";
             }
 
-        print(CheckCharacteristics());
-
+        //print(CheckCharacteristics());
+         UIText.text += CheckCharacteristics();
 
     }
 
     //A.04.2
-    void Update()
+    //public void Update()
+    public void OnClick()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        //if(Input.GetKeyDown(KeyCode.Space))
+        //if(Input.GetMouseButton(0))
         {
             ConsumeFuel();
             CheckFuelLevel();
@@ -73,31 +82,35 @@ public class SpeedRacer : MonoBehaviour
 
     }
 
-    void ConsumeFuel()
+    public void ConsumeFuel()
     {
         carFuel.fuelLevel = carFuel.fuelLevel - 10;
         
     }
 
-    void CheckFuelLevel()
+    public void CheckFuelLevel()
     {
         switch(carFuel.fuelLevel)
         {
             
             case 70:
-                print("fuel level is nearing two-thirds.");
+                //print("fuel level is nearing two-thirds.");
+                 UIText.text = "fuel level is nearing two-thirds.";
                 break;
 
             case 50:
-                print("fuel level is at half amount.");
+                //print("fuel level is at half amount.");
+                 UIText.text = "fuel level is at half amount.";
                 break;
 
             case 10:
-                print("Warning! Fuel level is critically low.");
+                //print("Warning! Fuel level is critically low.");
+                 UIText.text = "Warning! Fuel level is critically low.";
                 break;
 
             default:
-                print("There is nothing to report.");
+                //print("There is nothing to report.");
+                 UIText.text = "There is nothing to report.";
                 break;
 
         }
@@ -107,11 +120,13 @@ public class SpeedRacer : MonoBehaviour
     {
         if (carWeight < 1500)
         {
-            print("The " + carModel + "weighs less than 1500kg.");
+            //print("The " + carModel + "weighs less than 1500kg.");
+             UIText.text = "The " + carModel + "weighs less than 1500kg.";
         }
         else
         {
-            print("The " + carModel + "weighs over 1500kg.");
+            //print("The " + carModel + "weighs over 1500kg.");
+             UIText.text = "The " + carModel + "weighs over 1500kg.";
         }
     }
 
