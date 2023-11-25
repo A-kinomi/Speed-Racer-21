@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class SpeedRacer : MonoBehaviour
+public class A05 : MonoBehaviour
 {
     //Assignment.04.1
     public string carModel = "GTR R35";
@@ -17,28 +17,25 @@ public class SpeedRacer : MonoBehaviour
     //Assighnment.04.2
     public string carMaker;
 
-    
+
     public TextMeshProUGUI UITexts;
 
-    /*test
-    int fuel = 100;
-    */
 
     public class Fuel
     {
         public int fuelLevel;
-  
-        
+
+
         public Fuel(int amount)
         {
             fuelLevel = amount;
-           
+
         }
 
     }
 
-        public Fuel carFuel = new Fuel(100);
-   
+    public Fuel carFuel = new Fuel(100);
+
 
     public void Start()
     {
@@ -54,46 +51,27 @@ public class SpeedRacer : MonoBehaviour
 
         CheckWeight();
         if (yearMade <= 2009)
-            {
-                //print("The car was introduced in " + yearMade + ".");
-                 UITexts.text += "The car was introduced in " + yearMade + ".";
+        {
+            //print("The car was introduced in " + yearMade + ".");
+            UITexts.text += "The car was introduced in " + yearMade + ".";
 
-                int carAge = CalculateAge(yearMade);
+            int carAge = CalculateAge(yearMade);
 
-                //print("That makes it " + carAge + "years old.");
-                 UITexts.text += "That makes it " + carAge + "years old.";
-            }
-        else 
-            {
-                //print("The car was introduced in the 2010's.");
-                 UITexts.text += "The car was introduced in the 2010's.";
-                //print("The car's maximum acceleration is " + maxAcceleration + "m/s2.");
-                 UITexts.text += "The car's maximum acceleration is " + maxAcceleration + "m/s2.";
-            }
+            //print("That makes it " + carAge + "years old.");
+            UITexts.text += "That makes it " + carAge + "years old.";
+        }
+        else
+        {
+            //print("The car was introduced in the 2010's.");
+            UITexts.text += "The car was introduced in the 2010's.";
+            //print("The car's maximum acceleration is " + maxAcceleration + "m/s2.");
+            UITexts.text += "The car's maximum acceleration is " + maxAcceleration + "m/s2.";
+        }
 
         //print(CheckCharacteristics());
-         UITexts.text += CheckCharacteristics();
+        UITexts.text += CheckCharacteristics();
 
     }
-
-    /*
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            fuel -= 1;
-            UITexts.text = fuel.ToString();
-        }
-    }
-    */
-    
-    /*test
-    public void ShowFuel()
-    {
-        fuel -= 1;
-        UITexts.text = fuel.ToString();
-    }
-    */
 
     //A.04.2
     //public void Update()
@@ -105,39 +83,39 @@ public class SpeedRacer : MonoBehaviour
             ConsumeFuel();
             CheckFuelLevel();
         }
-       
+
 
     }
 
     public void ConsumeFuel()
     {
         carFuel.fuelLevel = carFuel.fuelLevel - 10;
-        
+
     }
 
     public void CheckFuelLevel()
     {
-        switch(carFuel.fuelLevel)
+        switch (carFuel.fuelLevel)
         {
-            
+
             case 70:
                 //print("fuel level is nearing two-thirds.");
-                 UITexts.text = "fuel level is nearing two-thirds.";
+                UITexts.text = "fuel level is nearing two-thirds.";
                 break;
 
             case 50:
                 //print("fuel level is at half amount.");
-                 UITexts.text = "fuel level is at half amount.";
+                UITexts.text = "fuel level is at half amount.";
                 break;
 
             case 10:
                 //print("Warning! Fuel level is critically low.");
-                 UITexts.text = "Warning! Fuel level is critically low.";
+                UITexts.text = "Warning! Fuel level is critically low.";
                 break;
 
             default:
                 //print("There is nothing to report.");
-                 UITexts.text = "There is nothing to report.";
+                UITexts.text = "There is nothing to report.";
                 break;
 
         }
@@ -148,12 +126,12 @@ public class SpeedRacer : MonoBehaviour
         if (carWeight < 1500)
         {
             //print("The " + carModel + "weighs less than 1500kg.");
-             UITexts.text = "The " + carModel + "weighs less than 1500kg.";
+            UITexts.text = "The " + carModel + "weighs less than 1500kg.";
         }
         else
         {
             //print("The " + carModel + "weighs over 1500kg.");
-             UITexts.text = "The " + carModel + "weighs over 1500kg.";
+            UITexts.text = "The " + carModel + "weighs over 1500kg.";
         }
     }
 
@@ -164,12 +142,12 @@ public class SpeedRacer : MonoBehaviour
 
     string CheckCharacteristics()
     {
-        if(isCarTypeSedan)
+        if (isCarTypeSedan)
         {
             return "The car type is a sedan.";
         }
 
-        else if(hasFrontEngine)
+        else if (hasFrontEngine)
         {
             return "The car isn't a sedan, but has a front engine.";
         }
