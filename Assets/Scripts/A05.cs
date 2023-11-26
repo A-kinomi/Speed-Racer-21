@@ -19,6 +19,7 @@ public class A05 : MonoBehaviour
 
 
     public TextMeshProUGUI UITexts;
+    public TextMeshProUGUI FuelConsumeText;
 
 
     public class Fuel
@@ -47,7 +48,7 @@ public class A05 : MonoBehaviour
         //UITexts = new TextMeshProUGUI();
 
         UITexts.text += "The lacer model is " + carModel + ". It is made by " + carMaker + ". It has a " + engineType + " engine.";
-        Debug.Log(UITexts.text);
+        //Debug.Log(UITexts.text);
 
         CheckWeight();
         if (yearMade <= 2009)
@@ -100,22 +101,22 @@ public class A05 : MonoBehaviour
 
             case 70:
                 //print("fuel level is nearing two-thirds.");
-                UITexts.text = "fuel level is nearing two-thirds.";
+                FuelConsumeText.text = "fuel level is nearing two-thirds.";
                 break;
 
             case 50:
                 //print("fuel level is at half amount.");
-                UITexts.text = "fuel level is at half amount.";
+                FuelConsumeText.text = "fuel level is at half amount.";
                 break;
 
             case 10:
                 //print("Warning! Fuel level is critically low.");
-                UITexts.text = "Warning! Fuel level is critically low.";
+                FuelConsumeText.text = "Warning! Fuel level is critically low.";
                 break;
 
             default:
                 //print("There is nothing to report.");
-                UITexts.text = "There is nothing to report.";
+                FuelConsumeText.text = "There is nothing to report.";
                 break;
 
         }
